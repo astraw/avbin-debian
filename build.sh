@@ -119,7 +119,6 @@ for PLATFORM in $platforms; do
     if [ $PLATFORM == "darwin-universal" ]; then
         build_darwin_universal
     else
-        build_ffmpeg
         build_avbin
     fi
 done
