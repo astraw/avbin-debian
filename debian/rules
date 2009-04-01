@@ -3,15 +3,10 @@
 AVBIN_VERSION=7
 FFMPEG_REVISION=13661
 
-include /usr/share/dpatch/dpatch.make
-
-build: patch-stamp
+build:
 	dh build --before configure
 	make
 	dh build --after build
-
-clean: unpatch
-	dh clean
 
 %:
 	dh $@
