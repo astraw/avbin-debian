@@ -16,7 +16,7 @@ INCLUDE_DIRS = -I include \
 SONAME=libavbin.so.$(AVBIN_VERSION)
 LIBNAME=$(OUTDIR)/$(SONAME)
 
-CFLAGS += -fPIC -fno-stack-protector -O3
+CFLAGS += -fPIC -fno-stack-protector
 LDFLAGS += -shared -soname $(SONAME)
 
 STATIC_LIBS = -whole-archive \
