@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+# Requires debhelper 7. See 
+# http://kitenet.net/~joey/blog/entry/cdbs_killer___40__design_phase__41__/
+
+AVBIN_VERSION=7
+FFMPEG_REVISION=13661
+
+include /usr/share/dpatch/dpatch.make
+
+build: patch-stamp
+	dh build --before configure
+	make
+	dh build --after build
+
+clean: unpatch
+	dh clean
+
+%:
+	dh $@
