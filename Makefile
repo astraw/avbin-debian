@@ -13,7 +13,22 @@ OBJNAME = $(BUILDDIR)/avbin.o
 INCLUDE_DIRS = -I include \
                -I $(FFMPEG)
 
-include Makefile.$(PLATFORM)
+SONAME=libavbin.so.$(AVBIN_VERSION)
+LIBNAME=$(OUTDIR)/$(SONAME)
+
+CFLAGS += -fPIC -fno-stack-protector -O3
+LDFLAGS += -shared -soname $(SONAME)
+
+STATIC_LIBS = -whole-archive \
+              $(FFMPEG)/libavformat/libavformat.a \
+              $(FFMPEG)/libavcodec/libavcodec.a \
+              $(FFMPEG)/libavutil/libavutil.a \
+              -no-whole-archive
+
+LIBS =
+
+$(LIBNAME) : $(OBJNAME) $(OUTDIR)
+	$(LD) $(LDFLAGS) -o $@ $< $(STATIC_LIBS) $(LIBS)
 
 all : $(LIBNAME)
 	ln -sf $(LIBNAME) $(LINKNAME)
