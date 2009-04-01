@@ -25,9 +25,9 @@
 #include <avbin.h>
 
 /* ffmpeg */
-#include <libavformat/avformat.h>
-#include <libavcodec/avcodec.h>
-#include <libavutil/avutil.h>
+#include <ffmpeg/avformat.h>
+#include <ffmpeg/avcodec.h>
+#include <ffmpeg/avutil.h>
 
 struct _AVbinFile {
     AVFormatContext *context;
