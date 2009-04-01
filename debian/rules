@@ -1,10 +1,5 @@
 #!/usr/bin/make -f
 
-# These would get set in build.sh
-AVBIN_VERSION=7
-FFMPEG_REVISION=13661
-FFMPEG=ffmpeg
-
 build:
 	dh build --before configure
 	make

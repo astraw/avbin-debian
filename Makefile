@@ -1,3 +1,7 @@
+# These would get set in build.sh
+AVBIN_VERSION=7
+FFMPEG_REVISION=13661
+
 # $Id: Makefile 18 2008-04-13 06:18:31Z Alex.Holkner $
 
 CFLAGS += -DAVBIN_VERSION=$(AVBIN_VERSION) \
@@ -10,25 +14,18 @@ OUTDIR = dist/$(PLATFORM)
 
 OBJNAME = $(BUILDDIR)/avbin.o
 
-INCLUDE_DIRS = -I include \
-               -I $(FFMPEG)
+INCLUDE_DIRS = -I include
 
 SONAME=libavbin.so.$(AVBIN_VERSION)
 LIBNAME=$(OUTDIR)/$(SONAME)
 
 CFLAGS += -fPIC -fno-stack-protector
-LDFLAGS += -shared -soname $(SONAME)
-
-STATIC_LIBS = -whole-archive \
-              $(FFMPEG)/libavformat/libavformat.a \
-              $(FFMPEG)/libavcodec/libavcodec.a \
-              $(FFMPEG)/libavutil/libavutil.a \
-              -no-whole-archive
+LDFLAGS = -Bsymbolic-functions -shared -soname $(SONAME)
 
 LIBS =
 
 $(LIBNAME) : $(OBJNAME) $(OUTDIR)
-	$(LD) $(LDFLAGS) -o $@ $< $(STATIC_LIBS) $(LIBS)
+	$(LD) $(LDFLAGS) -o $@ $< $(LIBS)
 
 all : $(LIBNAME)
 	ln -sf $(LIBNAME) $(LINKNAME)
