@@ -13,8 +13,13 @@ install: build
 	mv libavbin.so debian/avbin/usr/lib/
 	dh install --after install
 
-binary: install
-	dh binary
+binary-arch: install
+	dh binary-arch
+
+binary-indep:
+	dh binary-indep
+
+binary: binary-arch binary-indep
 
 %:
 	dh $@
