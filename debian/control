@@ -2,19 +2,39 @@ Source: avbin
 Maintainer: Andrew Straw <strawman@astraw.com>
 Section: utils
 Priority: extra
-Build-Depends: debhelper (>= 7), libtool, autoconf, automake, libavutil-dev, libavcodec-dev, libavformat-dev, libswscale-dev
+Build-Depends: debhelper (>= 7),
+               libtool,
+               autoconf,
+               automake,
+               libavutil-dev,
+               libavcodec-dev,
+               libavformat-dev,
+               libswscale-dev
 Standards-Version: 3.8.0
 
-Package: avbin
+Package: libavbin1
+Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ffmpeg
-Recommends:
-Suggests:
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         ffmpeg
 Description: cross-platform media decoding library
  AVbin is a thin wrapper around FFmpeg, providing binary compatibility
  for applications and languages that need it.
+ .
  FFmpeg is a collection of audio and video codecs widely used in
  projects such as mplayer, xine, GStreamer and VLC. It is under
  continuous development; so much so that its developers rarely provide
  a release, and SVN snapshots of the library must be statically linked
  to avoid version incompatibilities.
+
+Package: libavbin-dev
+Section: libdevel
+Architecture: any
+Depends: libavbin1 (= ${binary:Version})
+Description: development files for libavbin
+ AVbin is a thin wrapper around FFmpeg, providing binary compatibility
+ for applications and languages that need it.
+ .
+ This package contains the header files and static libraries needed to
+ compile applications or shared objects that use libavbin.
