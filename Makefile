@@ -1,4 +1,4 @@
-# $Id: Makefile 18 2008-04-13 06:18:31Z Alex.Holkner $
+# $Id$
 
 CFLAGS += -DAVBIN_VERSION=$(AVBIN_VERSION) \
           -DFFMPEG_REVISION=$(FFMPEG_REVISION)

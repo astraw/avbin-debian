@@ -85,6 +85,8 @@ size_t avbin_get_audio_buffer_size()
 
 int avbin_have_feature(const char *feature)
 {
+    if (strcmp(feature, "frame_rate") == 0)
+        return 1;
     return 0;
 }
 
@@ -141,6 +143,7 @@ void avbin_close_file(AVbinFile *file)
         free(file->packet);
     }
     av_close_input_file(file->context);
+    free(file);
 }
 
 AVbinResult avbin_seek_file(AVbinFile *file, AVbinTimestamp timestamp)
@@ -187,10 +190,15 @@ int avbin_stream_info(AVbinFile *file, int stream_index,
                       AVbinStreamInfo *info)
 {
     AVCodecContext *context = file->context->streams[stream_index]->codec;
+    AVbinStreamInfo8 *info_8 = NULL;
 
-    /* This is the first version, so anything smaller is an error. */
+    /* Error if not large enough for version 1 */
     if (info->structure_size < sizeof *info)
         return AVBIN_RESULT_ERROR;
+
+    /* Version 8 adds frame_rate feature */
+    if (info->structure_size >= sizeof(AVbinStreamInfo8))
+        info_8 = (AVbinStreamInfo8 *) info;
 
     switch (context->codec_type)
     {
@@ -200,6 +208,20 @@ int avbin_stream_info(AVbinFile *file, int stream_index,
             info->video.height = context->height;
             info->video.sample_aspect_num = context->sample_aspect_ratio.num;
             info->video.sample_aspect_den = context->sample_aspect_ratio.den;
+            if (info_8) 
+            {
+                AVRational frame_rate = \
+                    file->context->streams[stream_index]->r_frame_rate;
+                info_8->video.frame_rate_num = frame_rate.num;
+                info_8->video.frame_rate_den = frame_rate.den;
+
+                /* Work around bug in FFmpeg: if frame rate over 1000, divide
+                 * by 1000.
+                 */
+                if (info_8->video.frame_rate_num / 
+                        info_8->video.frame_rate_den > 1000)
+                    info_8->video.frame_rate_den *= 1000;
+            }
             break;
         case CODEC_TYPE_AUDIO:
             info->type = AVBIN_STREAM_TYPE_AUDIO;
@@ -214,10 +236,6 @@ int avbin_stream_info(AVbinFile *file, int stream_index,
                 case SAMPLE_FMT_S16:
                     info->audio.sample_format = AVBIN_SAMPLE_FORMAT_S16;
                     info->audio.sample_bits = 16;
-                    break;
-                case SAMPLE_FMT_S24:
-                    info->audio.sample_format = AVBIN_SAMPLE_FORMAT_S24;
-                    info->audio.sample_bits = 24;
                     break;
                 case SAMPLE_FMT_S32:
                     info->audio.sample_format = AVBIN_SAMPLE_FORMAT_S32;
@@ -269,6 +287,7 @@ void avbin_close_stream(AVbinStream *stream)
     if (stream->frame)
         av_free(stream->frame);
     avcodec_close(stream->codec_context);
+    free(stream);
 }
 
 int avbin_read(AVbinFile *file, AVbinPacket *packet)

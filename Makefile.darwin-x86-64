@@ -1,9 +1,10 @@
 LIBNAME=$(OUTDIR)/libavbin.$(AVBIN_VERSION).dylib
 
-CFLAGS += -O3 -mmacosx-version-min=10.3.9
+CFLAGS += -O3 -arch x86_64
 LDFLAGS += -dylib \
            -read_only_relocs suppress \
            -single_module \
+           -arch x86_64 \
            -install_name /usr/local/lib/libavbin.dylib
 
 STATIC_LIBS = $(FFMPEG)/libavformat/libavformat.a \
@@ -12,8 +13,9 @@ STATIC_LIBS = $(FFMPEG)/libavformat/libavformat.a \
 
 LIBS = -lSystem \
        -lz \
-	   -lbz2 \
-       -L/usr/lib/gcc/i686-apple-darwin9/4.0.1 -lgcc
+       -lbz2 \
+       /usr/lib/dylib1.o \
+       -L/usr/lib/gcc/i686-apple-darwin9/4.2.1/x86_64/ -lgcc
 
 $(LIBNAME) : $(OBJNAME) $(OUTDIR)
 	$(LD) $(LDFLAGS) -o $@ $< $(STATIC_LIBS) $(LIBS)

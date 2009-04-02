@@ -80,6 +80,8 @@ build_darwin_universal() {
 
 while [ "${1:0:2}" == "--" ]; do
     case $1 in
+        "--help") # fall through
+            ;;
         "--rebuild") REBUILD=1;;
         "--patch") 
             shift
@@ -110,8 +112,10 @@ if [ ! "$platforms" ]; then
     echo "  linux-x86-64"
     echo "  darwin-ppc-32"
     echo "  darwin-x86-32"
-    echo "  darwin-universal"
+    echo "  darwin-x86-64"
+    echo "  darwin-universal (32-bit only)"
     echo "  win32"
+    echo "  win64"
     exit 1
 fi
 
