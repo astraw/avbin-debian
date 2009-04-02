@@ -2,8 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT(avbin, 7, Alex.Holkner@gmail.com)
-AM_INIT_AUTOMAKE(avbin, 7)
+AC_INIT(avbin, 7.0, Alex.Holkner@gmail.com)
+AM_INIT_AUTOMAKE(avbin, 7.0)
 AC_CONFIG_SRCDIR([include/avbin.h])
 AC_CONFIG_HEADERS([config.h])
 
