@@ -15,7 +15,9 @@ INSTALLDIR = debian/avbin/usr/lib
 
 OBJNAME = $(BUILDDIR)/avbin.o
 
-INCLUDE_DIRS = -I include
+INCLUDE_DIRS = -I include -I /usr/include/libavformat \
+	-I /usr/include/libavcodec -I /usr/include/libavutil \
+	-I /usr/include/ffmpeg
 
 SONAME=libavbin.so.$(AVBIN_VERSION)
 LIBNAME=$(OUTDIR)/$(SONAME)
