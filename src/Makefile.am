@@ -6,5 +6,5 @@ INCLUDES = -I$(top_srcdir) -I../include -I/usr/include/libavformat -I/usr/includ
 lib_LTLIBRARIES= libavbin.la
 libavbin_la_SOURCES= $(c_sources)
 libavbin_la_CFLAGS= -DAVBIN_VERSION=7 -DFFMPEG_REVISION=15943
-libavbin_la_LDFLAGS= -version-info 0:7:0 -release 7.0
+libavbin_la_LDFLAGS= -version-info 0:7:0
 libavbin_la_LIBADD= -lavutil -lavcodec -lavformat -lswscale
