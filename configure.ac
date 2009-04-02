@@ -6,6 +6,9 @@ AC_INIT(avbin, 7.0, Alex.Holkner@gmail.com)
 AM_INIT_AUTOMAKE(avbin, 7.0)
 AC_CONFIG_SRCDIR([include/avbin.h])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
+
+AC_PROG_LIBTOOL
 
 # Checks for programs.
 AC_PROG_CC
