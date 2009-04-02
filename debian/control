@@ -2,7 +2,7 @@ Source: avbin
 Maintainer: Andrew Straw <strawman@astraw.com>
 Section: utils
 Priority: extra
-Build-Depends: debhelper (>= 7), libtool, autoconf, automake, libavutil-dev, libavcodec-dev, libavformat-dev, libpostproc-dev, libswscale-dev
+Build-Depends: debhelper (>= 7), libtool, autoconf, automake, libavutil-dev, libavcodec-dev, libavformat-dev, libswscale-dev
 Standards-Version: 3.7.3
 
 Package: avbin
