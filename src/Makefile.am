@@ -1,7 +1,7 @@
 # See http://sourceware.org/autobook/autobook/autobook_88.html
 c_sources = avbin.c
 
-INCLUDES = -I$(top_srcdir) -I../include -I/usr/include/libavformat -I/usr/include/libavcodec -I/usr/include/libavutil -I/usr/include/libswscale
+INCLUDES = -I$(top_srcdir) -I../include -I/usr/include/libavformat -I/usr/include/libavcodec -I/usr/include/libavutil -I/usr/include/libswscale -I/usr/include/ffmpeg
 
 lib_LTLIBRARIES= libavbin.la
 libavbin_la_SOURCES= $(c_sources)
