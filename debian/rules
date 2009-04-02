@@ -5,21 +5,5 @@ build:
 	make
 	dh build --after build
 
-install: build
-	dh install --before install
-	mkdir -p debian/avbin/usr/lib
-	cp dist/* debian/avbin/usr/lib/
-	ln -s libavbin.so.7 libavbin.so
-	mv libavbin.so debian/avbin/usr/lib/
-	dh install --after install
-
-binary-arch: install
-	dh binary-arch
-
-binary-indep:
-	dh binary-indep
-
-binary: binary-arch binary-indep
-
 %:
 	dh $@

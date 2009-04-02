@@ -11,6 +11,7 @@ CC = gcc
 LD = ld
 BUILDDIR = build
 OUTDIR = dist/$(PLATFORM)
+INSTALLDIR = debian/avbin/usr/lib
 
 OBJNAME = $(BUILDDIR)/avbin.o
 
@@ -29,6 +30,10 @@ $(LIBNAME) : $(OBJNAME) $(OUTDIR)
 
 all : $(LIBNAME)
 	ln -sf $(LIBNAME) $(LINKNAME)
+
+install : all
+	install -d $(INSTALLDIR)
+	install $(LIBNAME) $(INSTALLDIR)
 
 $(OBJNAME) : src/avbin.c include/avbin.h $(BUILDDIR)
 	$(CC) -c $(CFLAGS) $(INCLUDE_DIRS) -o $@ $<
