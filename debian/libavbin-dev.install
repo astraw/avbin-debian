@@ -1,2 +1,2 @@
-/usr/lib/libavbin.a
+usr/lib/libavbin.a
 usr/lib/{,*/,*/*/}libavutil.so
