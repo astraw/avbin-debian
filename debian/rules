@@ -3,7 +3,7 @@
 build:
 	dh build --before configure
 	sh ./bootstrap.sh
-	./configure --prefix=/usr
+	dh_auto_configure
 	dh build --after configure
 
 %:
