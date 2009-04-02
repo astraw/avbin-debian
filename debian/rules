@@ -1,9 +1,3 @@
 #!/usr/bin/make -f
-
-build:
-	dh build --before configure
-	make
-	dh build --after build
-
 %:
 	dh $@
