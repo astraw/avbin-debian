@@ -7,8 +7,8 @@ FFMPEG_REVISION=13661
 CFLAGS += -DAVBIN_VERSION=$(AVBIN_VERSION) \
           -DFFMPEG_REVISION=$(FFMPEG_REVISION)
 
-CC = gcc
-LD = ld
+CC = libtool --mode=compile gcc
+LD = libtool --mode=link --tag CC gcc
 BUILDDIR = build
 OUTDIR = dist/$(PLATFORM)
 INSTALLDIR = debian/avbin/usr/lib
@@ -23,7 +23,7 @@ SONAME=libavbin.so.$(AVBIN_VERSION)
 LIBNAME=$(OUTDIR)/$(SONAME)
 
 CFLAGS += -fPIC -fno-stack-protector
-LDFLAGS = -Bsymbolic-functions -shared -soname $(SONAME)
+LDFLAGS = -Bsymbolic-functions -shared
 
 LIBS =
 
