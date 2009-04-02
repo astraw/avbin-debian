@@ -1,5 +1,4 @@
 #!/bin/sh
-#autoreconf -fvi
 libtoolize --force \
 && autoheader \
 && aclocal \
