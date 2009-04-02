@@ -3,11 +3,11 @@ Maintainer: Andrew Straw <strawman@astraw.com>
 Section: utils
 Priority: extra
 Build-Depends: debhelper (>= 7), libtool, autoconf, automake, libavutil-dev, libavcodec-dev, libavformat-dev, libswscale-dev
-Standards-Version: 3.7.3
+Standards-Version: 3.8.0
 
 Package: avbin
 Architecture: any
-Depends: ${shlibs:Depends}, ffmpeg
+Depends: ${shlibs:Depends}, ${misc:Depends}, ffmpeg
 Recommends:
 Suggests:
 Description: cross-platform media decoding library
