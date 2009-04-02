@@ -31,7 +31,7 @@ Description: cross-platform media decoding library
 Package: libavbin-dev
 Section: libdevel
 Architecture: any
-Depends: libavbin1 (= ${binary:Version}),
+Depends: libavbin0 (= ${binary:Version}),
          ${shlibs:Depends},
          ${misc:Depends}
 Description: development files for libavbin
