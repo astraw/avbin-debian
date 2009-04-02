@@ -3,6 +3,7 @@
 
 AC_PREREQ([2.63])
 AC_INIT(avbin, 7, Alex.Holkner@gmail.com)
+AM_INIT_AUTOMAKE(avbin, 7)
 AC_CONFIG_SRCDIR([include/avbin.h])
 AC_CONFIG_HEADERS([config.h])
 
@@ -24,3 +25,4 @@ AC_TYPE_UINT8_T
 AC_FUNC_MALLOC
 
 AC_OUTPUT
+AC_OUTPUT(Makefile src/Makefile)
