@@ -1,3 +1,10 @@
 #!/usr/bin/make -f
+
+build:
+	dh build --before configure
+	./bootstrap.sh
+	./configure
+	dh build --after configure
+
 %:
 	dh $@
