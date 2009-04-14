@@ -11,6 +11,9 @@ Build-Depends: debhelper (>= 7),
                libavformat-dev,
                libswscale-dev
 Standards-Version: 3.8.0
+Homepage: http://code.google.com/p/avbin/
+Vcs-Git: git://github.com/astraw/avbin-debian.git
+Vcs-Browser: http://github.com/astraw/avbin-debian/tree/master
 
 Package: libavbin0
 Section: libs
