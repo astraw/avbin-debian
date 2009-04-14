@@ -1,5 +1,5 @@
 avbin (7-0ads3) unstable; urgency=low
 
-  * Initial packaging
+  * Initial packaging. Closes #523809
 
  -- Andrew Straw <strawman@astraw.com>  Wed, 01 Apr 2009 08:53:48 -0700
