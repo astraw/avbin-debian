@@ -1,6 +1,6 @@
 avbin was downloaded from http://code.google.com/p/avbin/downloads/list 
 
-Copyright (c) Alex Holkner
+Copyright (c) 2007 Alex Holkner
 
 From avbin/README:
 
@@ -23,6 +23,9 @@ Thus, the code is licensed under the GNU LGPL:
  | You should have received a copy of the GNU General Public License
  | along with this program; if not, write to the Free Software
  | Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+The Debian packaging is Copyright (c) 2009 Andrew Straw and Matthew Johnson
+and is also distributed under the terms of the GNU LGPL.
 
 On Debian GNU/Linux systems, the complete text of the GNU General Public
 License can be found in `/usr/share/common-licenses/GPL' and the text of the

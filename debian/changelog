@@ -1,5 +1,7 @@
-avbin (7-0ads3) unstable; urgency=low
+avbin (7-1) unstable; urgency=low
 
-  * Initial packaging. Closes #523809
+  [ Andrew Straw ]
+  [ Matthew Johnson ]
+  * Initial packaging. (Closes: #523809)
 
- -- Andrew Straw <strawman@astraw.com>  Wed, 01 Apr 2009 08:53:48 -0700
+ -- Matthew Johnson <mjj29@debian.org>  Sat, 02 May 2009 19:34:29 +0100

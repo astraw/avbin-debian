@@ -1,5 +1,6 @@
 Source: avbin
 Maintainer: Andrew Straw <strawman@astraw.com>
+Uploaders: Matthew Johnson <mjj29@debian.org>
 Section: utils
 Priority: extra
 Build-Depends: debhelper (>= 7),
