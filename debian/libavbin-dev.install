@@ -1,2 +1,4 @@
 usr/lib/libavbin.a
 usr/lib/libavbin.so
+include/avbin.h usr/include
+doc/html usr/share/doc/libavbin-dev
